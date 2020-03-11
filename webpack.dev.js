@@ -1,0 +1,42 @@
+const path = require('path');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  entry: './src/render.js',
+
+  mode: 'development',
+  devtool: 'inline-source-map',
+
+  devServer: {
+    contentBase: './dist',
+    hot: true,
+    host: '0.0.0.0',
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+      },
+      {
+        test: /\.postcss$/,
+        use: [
+          'vue-style-loader',
+          {
+            loader: 'css-loader',
+            options: { importLoaders: 1 },
+          },
+          'postcss-loader',
+        ],
+      },
+    ],
+  },
+
+  plugins: [new VueLoaderPlugin(), new HtmlWebpackPlugin()],
+
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+  },
+};
