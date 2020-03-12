@@ -1,3 +1,7 @@
 module.exports = {
-  // theme: {},
+  important: true,
+
+  theme: {},
+  variants: {},
+  plugins: [],
 };

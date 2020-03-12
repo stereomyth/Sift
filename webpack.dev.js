@@ -22,15 +22,11 @@ module.exports = {
       },
       {
         test: /\.postcss$/,
-        use: [
-          'vue-style-loader',
-          {
-            loader: 'css-loader',
-            options: { importLoaders: 1 },
-          },
-          'postcss-loader',
-        ],
+        use: ['vue-style-loader', 'css-loader', 'postcss-loader'],
       },
+    ],
+  },
+
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Sift',
