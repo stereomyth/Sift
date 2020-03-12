@@ -1,8 +1,12 @@
 <script>
+import { remote } from 'electron';
+
 export default {
   methods: {
     open() {
-      console.log('open');
+      remote.dialog.showOpenDialog().then(thing => {
+        console.log(thing);
+      });
     },
   },
 };
