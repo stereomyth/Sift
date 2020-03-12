@@ -5,7 +5,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "electron ./",
+    "start": "electron ./src/main.js",
     "dev": "webpack-dev-server --config webpack.dev.js"
   },
   "keywords": [],

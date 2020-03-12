@@ -31,10 +31,13 @@ module.exports = {
           'postcss-loader',
         ],
       },
-    ],
-  },
-
-  plugins: [new VueLoaderPlugin(), new HtmlWebpackPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Sift',
+      template: 'src/index.ejs',
+    }),
+    new VueLoaderPlugin(),
+  ],
 
   output: {
     path: path.resolve(__dirname, 'dist'),
