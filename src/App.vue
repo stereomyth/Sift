@@ -1,22 +1,23 @@
 <script>
-import Side from './components/Side.vue';
+import Main from './components/Main.vue';
 
 export default {
-  components: { Side },
+  components: { Main },
 };
 </script>
 
 <template>
-  <div class="flex">
-    <div class="main">
-      <h1>main</h1>
-    </div>
-    <Side />
-  </div>
+  <Main />
 </template>
 
-<style lang="postcss" scoped>
+<style lang="postcss">
 @tailwind base;
+
+body {
+  background-color: #333;
+  color: white;
+}
+
 @tailwind components;
 @tailwind utilities;
 </style>

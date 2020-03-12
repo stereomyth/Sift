@@ -1,17 +1,19 @@
 <script>
-export default {};
+export default {
+  data: () => ({ choices: [1, 2, 3, 4, 5, 6, 7] }),
+};
 </script>
 
 <template>
   <div class="flex bg-red">
     <div class="choices">
-      <button class="choice">1</button>
-      <button class="choice">2</button>
-      <button class="choice">3</button>
-      <button class="choice">4</button>
-      <button class="choice">5</button>
-      <button class="choice">6</button>
-      <button class="choice">7</button>
+      <button
+        v-for="choice in choices"
+        :key="choice"
+        class="bg-black rounded block w-40 text-left p-2 m-2"
+      >
+        {{ choice }}
+      </button>
     </div>
   </div>
 </template>
