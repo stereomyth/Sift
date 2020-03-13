@@ -3,8 +3,11 @@ import { mapState, mapMutations } from 'vuex';
 
 export default {
   computed: {
+    padded() {
+      return [...Array(3).fill({}), ...this.images, ...Array(3).fill({})];
+    },
     upcomming() {
-      return [...Array(3).fill({}), ...this.images].slice(this.cursor, this.cursor + 20);
+      return this.padded.slice(this.cursor, this.cursor + 20);
     },
     ...mapState(['images', 'cursor']),
   },
@@ -27,7 +30,7 @@ export default {
         :src="`file://${img.path}`"
         class="h-40 w-32 object-cover"
         @click="focus(img.id)"
-        v-if="img.id"
+        v-if="img.path"
       />
     </div>
   </div>
