@@ -30,6 +30,10 @@ export default new Vuex.Store({
       });
     },
 
+    focus(state, val) {
+      state.cursor = val;
+    },
+
     getDestDirs(state) {
       if (state.destPath) {
         fs.readdir(state.destPath, { withFileTypes: true }, (error, items) => {

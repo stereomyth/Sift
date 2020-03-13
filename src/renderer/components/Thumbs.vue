@@ -1,13 +1,16 @@
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 
 export default {
   computed: {
     upcomming() {
       return this.images.slice(this.cursor, this.cursor + 20);
     },
-
     ...mapState(['images', 'cursor']),
+  },
+
+  methods: {
+    ...mapMutations(['focus']),
   },
 };
 </script>
@@ -20,7 +23,7 @@ export default {
       :class="{ 'border-2': img.id === cursor }"
       v-for="img in upcomming"
       :key="img.path"
-      @click="current = img.id"
+      @click="focus(img.id)"
     />
   </div>
 </template>
