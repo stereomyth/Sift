@@ -2,14 +2,12 @@
 import { mapState } from 'vuex';
 
 export default {
-  data: () => ({ current: 0 }),
-
   computed: {
     focus() {
-      return this.images.length ? this.images[this.current] : {};
+      return this.images.length ? this.images[this.cursor] : {};
     },
 
-    ...mapState(['images']),
+    ...mapState(['images', 'cursor']),
   },
 };
 </script>

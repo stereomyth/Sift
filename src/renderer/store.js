@@ -14,6 +14,7 @@ export default new Vuex.Store({
 
     images: [],
     destDirs: [],
+    cursor: 0,
   },
 
   mutations: {
