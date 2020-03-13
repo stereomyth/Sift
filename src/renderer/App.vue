@@ -1,10 +1,11 @@
 <script>
 import Side from '@/components/Side.vue';
+import Thumbs from '@/components/Thumbs.vue';
 import Top from '@/components/Top.vue';
 import Viewer from '@/components/Viewer.vue';
 
 export default {
-  components: { Side, Top, Viewer },
+  components: { Side, Thumbs, Top, Viewer },
 };
 </script>
 
@@ -13,9 +14,9 @@ export default {
     <Top />
     <div class="flex text flex-1">
       <Viewer class="flex-1" />
-      <!-- <Side /> -->
+      <Side />
     </div>
-    <!-- <Thumbs /> -->
+    <Thumbs />
   </div>
 </template>
 
