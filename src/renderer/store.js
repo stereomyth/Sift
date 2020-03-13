@@ -12,7 +12,13 @@ export default new Vuex.Store({
     destDirs: [],
   },
 
-  mutations: {},
+  mutations: {
+    config(state, obj) {
+      Object.keys(obj).forEach(key => {
+        state[key] = obj[key];
+      });
+    },
+  },
 
   actions: {},
 });
