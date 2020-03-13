@@ -4,7 +4,7 @@ import { mapState, mapMutations } from 'vuex';
 export default {
   computed: {
     upcomming() {
-      return this.images.slice(this.cursor, this.cursor + 20);
+      return [...Array(3).fill({}), ...this.images].slice(this.cursor, this.cursor + 20);
     },
     ...mapState(['images', 'cursor']),
   },
@@ -17,19 +17,20 @@ export default {
 
 <template>
   <div class="flex overflow-hidden">
-    <img
-      :src="`file://${img.path}`"
-      class="h-40 object-contain rounded m-1 block object-cover thing"
-      :class="{ 'border-2': img.id === cursor }"
+    <div
       v-for="img in upcomming"
-      :key="img.path"
-      @click="focus(img.id)"
-    />
+      :key="img.id"
+      :class="{ 'border-2': img.id === cursor }"
+      class="h-40 w-32 flex-shrink-0 m-1 rounded overflow-hidden bg-gray-800"
+    >
+      <img
+        :src="`file://${img.path}`"
+        class="h-40 w-32 object-cover"
+        @click="focus(img.id)"
+        v-if="img.id"
+      />
+    </div>
   </div>
 </template>
 
-<style lang="postcss" scoped>
-.thing {
-  max-width: 160px;
-}
-</style>
+<style lang="postcss" scoped></style>
