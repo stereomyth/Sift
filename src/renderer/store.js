@@ -53,5 +53,11 @@ export default new Vuex.Store({
     },
   },
 
-  actions: {},
+  actions: {
+    init({ commit }) {
+      commit('config', settings.getAll());
+      commit('getSrcImgs');
+      commit('getDestDirs');
+    },
+  },
 });
