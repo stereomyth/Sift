@@ -1,46 +1,35 @@
 <script>
 import { remote } from 'electron';
+import { mapState, mapActions } from 'vuex';
 
 export default {
-  props: ['parent', 'source'],
-
   computed: {
-    parentStyle() {
-      return `width: ${this.parent.length * 0.6 + 0.5}em`;
-    },
+    ...mapState(['destPath', 'srcPath']),
   },
 
   methods: {
-    open() {
-      remote.dialog.showOpenDialog({ properties: ['openDirectory'] }).then(thing => {
-        this.$emit('change', { parent: thing.filePaths[0] });
+    open(target) {
+      remote.dialog.showOpenDialog({ properties: ['openDirectory'] }).then(res => {
+        if (res.filePaths[0]) {
+          this.config({ [target]: res.filePaths[0] });
+        }
       });
     },
+
+    ...mapActions(['config']),
   },
 };
 </script>
 
 <template>
-  <div>
-    <div class="flex items-center">
-      <button class="bg-black rounded p-2 m-2" @click="open">Open</button>
-      <div>
-        <!-- <label for="">Parent</label> -->
-        <input
-          type="text"
-          :style="parentStyle"
-          :value="parent"
-          @input="$emit('change', { parent: $event.target.value })"
-        />
+  <div class="border-b border-gray-700">
+    <div class="flex items-center px-2 py-1 font-mono select-none">
+      <div @click="open('srcPath')" class="hover:bg-gray-700 cursor-pointer">
+        {{ srcPath || 'Source path' }}
       </div>
-      <div class="font-mono">/</div>
-      <div>
-        <!-- <label for="">Source</label> -->
-        <input
-          type="text"
-          :value="source"
-          @input="$emit('change', { source: $event.target.value })"
-        />
+      <div class="mx-2 text-gray-500">-></div>
+      <div @click="open('destPath')" class="hover:bg-gray-700 cursor-pointer">
+        {{ destPath || 'Destination path' }}
       </div>
     </div>
   </div>
