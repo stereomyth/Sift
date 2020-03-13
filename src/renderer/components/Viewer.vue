@@ -21,7 +21,11 @@ export default {
 <template>
   <div class="flex flex-col">
     <div class="m-1 flex-1 relative">
-      <img :src="`file://${focus.path}`" class="w-full h-full object-contain absolute inset-0" />
+      <img
+        :src="`file://${focus.path}`"
+        class="w-full h-full object-contain absolute inset-0"
+        v-if="focus.path"
+      />
     </div>
     <div class="flex overflow-hidden">
       <img

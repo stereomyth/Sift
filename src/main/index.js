@@ -1,25 +1,28 @@
 const { app, BrowserWindow } = require('electron');
-const { dialog } = require('electron');
 
 const path = require('path');
 
+const isDevelopment = process.env.NODE_ENV !== 'production';
+
 const createWindow = () => {
-  // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: { nodeIntegration: true, webSecurity: false },
   });
 
-  // and load the index.html of the app.
-  // mainWindow.loadFile(path.join(__dirname, "index.html"));
-  mainWindow.loadURL('http://localhost:8081/');
-
-  mainWindow.webContents.openDevTools();
-  // dialog.showOpenDialog({ properties: ["openFile"] }).then(thing => {
-  //   console.log(thing);
-  // });
-  // Open the DevTools.
+  if (isDevelopment) {
+    mainWindow.webContents.openDevTools();
+    mainWindow.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`);
+  } else {
+    mainWindow.loadURL(
+      formatUrl({
+        pathname: path.join(__dirname, 'index.html'),
+        protocol: 'file',
+        slashes: true,
+      })
+    );
+  }
 };
 
 // This method will be called when Electron has finished
