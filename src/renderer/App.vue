@@ -1,21 +1,29 @@
 <script>
-import Main from '@/components/Main.vue';
+import Side from '@/components/Side.vue';
+import Top from '@/components/Top.vue';
+import Viewer from '@/components/Viewer.vue';
 
 export default {
-  components: { Main },
+  components: { Side, Top, Viewer },
 };
 </script>
 
 <template>
-  <Main />
+  <div class="flex flex-col h-screen">
+    <Top />
+    <div class="flex text flex-1">
+      <Viewer class="flex-1" />
+      <!-- <Side /> -->
+    </div>
+    <!-- <Thumbs /> -->
+  </div>
 </template>
 
 <style lang="postcss">
 @tailwind base;
 
 body {
-  background-color: #333;
-  @apply text-white;
+  @apply text-white bg-gray-900;
 }
 
 input {
