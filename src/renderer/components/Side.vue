@@ -4,10 +4,10 @@ import { mapState } from 'vuex';
 export default {
   computed: {
     choices() {
-      return this.destDirs.filter(d => d.path !== this.destPath);
+      return this.destDirs.filter(d => d.path !== this.srcPath);
     },
 
-    ...mapState(['destDirs', 'destPath']),
+    ...mapState(['destDirs', 'srcPath']),
   },
 };
 </script>
