@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 
 const fs = require('fs');
 const { join } = require('path');
+const settings = require('electron').remote.require('electron-settings');
 
 Vue.use(Vuex);
 
@@ -19,6 +20,12 @@ export default new Vuex.Store({
     config(state, obj) {
       Object.keys(obj).forEach(key => {
         state[key] = obj[key];
+      });
+    },
+
+    save(state, obj) {
+      Object.keys(obj).forEach(key => {
+        settings.set(key, obj[key]);
       });
     },
 

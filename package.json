@@ -17,6 +17,7 @@
   "devDependencies": {
     "css-loader": "^3.4.2",
     "electron": "^8.1.1",
+    "electron-settings": "^3.2.0",
     "electron-webpack": "^2.7.4",
     "postcss-loader": "^3.0.0",
     "tailwindcss": "^1.2.0",
