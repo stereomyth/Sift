@@ -10,13 +10,11 @@ export default {
 </script>
 
 <template>
-  <div class="flex flex-col h-screen">
-    <Top />
-    <div class="flex text flex-1">
-      <Viewer class="flex-1" />
-      <Side />
-    </div>
-    <Thumbs />
+  <div class="grid grid-contain w-screen h-screen">
+    <Top class="top" />
+    <Viewer class="viewer" />
+    <Side class="side" />
+    <Thumbs class="thumbs" />
   </div>
 </template>
 
@@ -43,6 +41,22 @@ pre {
 
 .btn {
   @apply bg-black rounded block w-40 text-left p-2 m-2;
+}
+
+.grid-contain {
+  grid-template: 32px auto 150px / auto 150px;
+}
+.top {
+  grid-area: 1 / 1 / 2 / 3;
+}
+.viewer {
+  grid-area: 2 / 1 / 3 / 2;
+}
+.side {
+  grid-area: 2 / 2 / 3 / 3;
+}
+.thumbs {
+  grid-area: 3 / 1 / 4 / 3;
 }
 
 @tailwind components;

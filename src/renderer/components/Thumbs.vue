@@ -24,11 +24,11 @@ export default {
       v-for="img in upcomming"
       :key="img.id"
       :class="{ 'border-2': img.id === cursor }"
-      class="h-40 w-32 flex-shrink-0 m-1 rounded overflow-hidden bg-gray-800"
+      class="w-32 flex-shrink-0 m-1 rounded overflow-hidden bg-gray-800"
     >
       <img
         :src="`file://${img.path}`"
-        class="h-40 w-32 object-cover"
+        class="w-32 h-full  object-cover"
         @click="focus(img.id)"
         v-if="img.path"
       />

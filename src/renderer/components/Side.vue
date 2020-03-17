@@ -13,11 +13,9 @@ export default {
 </script>
 
 <template>
-  <div class="w-32 relative overflow-hidden">
-    <div class="flex flex-col overflow-y-scroll absolute inset-0">
-      <button v-for="choice in choices" :key="choice.path" class="hover:bg-gray-700 text-left">
-        {{ choice.name }}
-      </button>
-    </div>
+  <div class="flex flex-col overflow-hidden">
+    <button v-for="choice in choices" :key="choice.path" class="hover:bg-gray-700 text-left">
+      {{ choice.name }}
+    </button>
   </div>
 </template>
