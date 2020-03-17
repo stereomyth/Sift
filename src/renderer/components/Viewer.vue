@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col ml-1 mt-1">
     <div class="m-1 flex-1 relative bg-gray-800 rounded">
       <img
         :src="`file://${focus.path}`"

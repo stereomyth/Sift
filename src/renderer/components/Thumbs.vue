@@ -19,7 +19,7 @@ export default {
 </script>
 
 <template>
-  <div class="flex overflow-hidden">
+  <div class="flex overflow-hidden m-1">
     <div
       v-for="img in upcomming"
       :key="img.id"

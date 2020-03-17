@@ -24,11 +24,11 @@ export default {
 <template>
   <div class="border-b border-gray-700">
     <div class="flex items-center px-2 py-1 font-mono select-none">
-      <div @click="open('srcPath')" class="hover:bg-gray-700 cursor-pointer">
+      <div @click="open('srcPath')" class="btn">
         {{ srcPath || 'Source path' }}
       </div>
       <div class="mx-2 text-gray-500">-></div>
-      <div @click="open('destPath')" class="hover:bg-gray-700 cursor-pointer">
+      <div @click="open('destPath')" class="btn">
         {{ destPath || 'Destination path' }}
       </div>
     </div>
