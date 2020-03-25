@@ -36,6 +36,14 @@ export default new Vuex.Store({
       state.cursor = val;
     },
 
+    focusNext(state) {
+      state.cursor = state.cursor < state.images.length - 1 ? state.cursor + 1 : 0;
+    },
+
+    focusPrev(state) {
+      state.cursor = (state.cursor > 0 ? state.cursor : state.images.length) - 1;
+    },
+
     getDestDirs(state) {
       if (state.destPath) {
         fs.readdir(state.destPath, { withFileTypes: true }, (error, items) => {
