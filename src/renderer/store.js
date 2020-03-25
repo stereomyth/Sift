@@ -83,6 +83,18 @@ export default new Vuex.Store({
   },
 
   actions: {
+    move({ state, commit, getters }, dir) {
+      const oldPath = getters.current.path;
+      const newPath = join(dir.path, getters.current.filename);
+
+      console.log('moving', oldPath, newPath);
+
+      fs.rename(oldPath, newPath, (error, file) => {
+        state.images[state.cursor].path = newPath;
+        commit('focusNext');
+      });
+    },
+
     config({ commit, state }, obj) {
       commit('config', obj);
       commit('save', obj);
