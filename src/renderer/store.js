@@ -40,7 +40,7 @@ export default new Vuex.Store({
       if (state.destPath) {
         fs.readdir(state.destPath, { withFileTypes: true }, (error, items) => {
           state.destDirs = items
-            .filter(item => item.isDirectory())
+            .filter(item => item.isDirectory() && item.name.charAt(0) !== '.')
             .map(dir => ({ path: join(state.destPath, dir.name), ...dir }));
         });
       }
