@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-  <div class="flex flex-col overflow-hidden m-1 ml-0">
+  <div class="flex flex-col overflow-y-auto pr-1 py-1">
     <button v-for="choice in choices" :key="choice.path" class="btn m-1 text-left">
       {{ choice.name }}
     </button>

@@ -41,7 +41,7 @@ export default {
 </script>
 
 <template>
-  <div class="flex overflow-hidden m-1 mt-0 justify-center rpad">
+  <div class="flex overflow-hidden mb-1 justify-center rpad">
     <div
       v-for="img in upcomming"
       :key="img.id"
