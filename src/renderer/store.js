@@ -13,6 +13,7 @@ export default new Vuex.Store({
   state: {
     srcPath: '',
     destPath: '',
+    ignore: [],
 
     images: [],
     destDirs: [],
@@ -30,6 +31,11 @@ export default new Vuex.Store({
       Object.keys(obj).forEach(key => {
         settings.set(key, obj[key]);
       });
+    },
+
+    addIgnore(state, path) {
+      state.ignore.push(path);
+      settings.set('ignore', state.ignore);
     },
 
     focus(state, val) {
@@ -80,6 +86,7 @@ export default new Vuex.Store({
 
   getters: {
     current: state => (state.images.length ? state.images[state.cursor] : {}),
+    dirs: state => state.destDirs.filter(d => !state.ignore.includes(d.path)),
   },
 
   actions: {

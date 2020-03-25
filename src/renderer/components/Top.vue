@@ -11,7 +11,7 @@ export default {
     open(target) {
       remote.dialog.showOpenDialog({ properties: ['openDirectory'] }).then(res => {
         if (res.filePaths[0]) {
-          this.config({ [target]: res.filePaths[0] });
+          this.config({ [target]: res.filePaths[0], ignore: [] });
         }
       });
     },
