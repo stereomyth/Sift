@@ -1,13 +1,10 @@
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 
 export default {
   computed: {
-    focus() {
-      return this.images.length ? this.images[this.cursor] : {};
-    },
-
     ...mapState(['images', 'cursor']),
+    ...mapGetters(['current']),
   },
 };
 </script>
@@ -16,12 +13,12 @@ export default {
   <div class="flex flex-col ml-1 mt-1">
     <div class="m-1 flex-1 relative bg-gray-800 rounded">
       <img
-        :src="`file://${focus.path}`"
+        :src="`file://${current.path}`"
         class="w-full h-full object-contain absolute inset-0"
-        v-if="focus.path"
+        v-if="current.path"
       />
       <div class="meta">
-        {{ focus.filename }}
+        {{ current.filename }}
       </div>
       <div class="meta right-0">{{ cursor }} of {{ images.length }}</div>
     </div>

@@ -70,6 +70,10 @@ export default new Vuex.Store({
     },
   },
 
+  getters: {
+    current: state => (state.images.length ? state.images[state.cursor] : {}),
+  },
+
   actions: {
     config({ commit, state }, obj) {
       commit('config', obj);
