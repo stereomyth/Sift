@@ -20,7 +20,7 @@ export default {
       <div class="meta">
         {{ current.filename }}
       </div>
-      <div class="meta right-0">{{ cursor }} of {{ images.length }}</div>
+      <div class="meta right-0">{{ cursor + 1 }} of {{ images.length }}</div>
     </div>
   </div>
 </template>
