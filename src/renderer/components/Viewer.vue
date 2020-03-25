@@ -11,10 +11,15 @@ export default {
 
 <template>
   <div class="flex flex-col ml-1 mt-1">
-    <div class="m-1 flex-1 relative bg-gray-800 rounded">
+    <div class="m-1 flex-1 relative bg-gray-800 rounded overflow-hidden">
       <img
         :src="`file://${current.path}`"
-        class="w-full h-full object-contain absolute inset-0"
+        class="w-full h-full object-cover rounded absolute inset-0 blur opacity-25"
+        v-if="current.path"
+      />
+      <img
+        :src="`file://${current.path}`"
+        class="w-full h-full object-contain rounded absolute inset-0"
         v-if="current.path"
       />
       <div class="meta">
@@ -31,5 +36,8 @@ export default {
 }
 .meta:hover {
   @apply opacity-75;
+}
+.blur {
+  filter: blur(10px) grayscale(100%);
 }
 </style>
