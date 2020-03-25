@@ -2,8 +2,10 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 const fs = require('fs');
-const { join } = require('path');
+const { join, extname } = require('path');
 const settings = require('electron').remote.require('electron-settings');
+
+const exts = ['.gif', '.jpg', '.jpeg', '.png', '.webp', '.jfif'];
 
 Vue.use(Vuex);
 
@@ -48,11 +50,21 @@ export default new Vuex.Store({
       // make recursive?
       if (state.srcPath) {
         fs.readdir(join(state.srcPath), (error, files) => {
-          state.images = files.map((file, i) => ({
-            path: join(state.srcPath, file),
-            filename: file,
-            id: i,
-          }));
+          console.log(
+            'discovered extensions:',
+            [...new Set(files.map(f => extname(f).toLowerCase()))].filter(
+              ext => ext && !exts.includes(ext)
+            )
+          );
+
+          state.images = files
+            .filter(filename => exts.includes(extname(filename).toLowerCase()))
+            .map((file, i) => ({
+              path: join(state.srcPath, file),
+              ext: extname(file),
+              filename: file,
+              id: i,
+            }));
         });
       }
     },
