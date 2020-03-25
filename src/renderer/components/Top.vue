@@ -1,6 +1,6 @@
 <script>
 import { remote } from 'electron';
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions, mapMutations } from 'vuex';
 
 export default {
   computed: {
@@ -16,7 +16,23 @@ export default {
       });
     },
 
+    key(event) {
+      if (event.key === 'ArrowLeft') {
+        this.focusPrev();
+      } else if (event.key === 'ArrowRight') {
+        this.focusNext();
+      }
+    },
+
     ...mapActions(['config']),
+    ...mapMutations(['focusNext', 'focusPrev']),
+  },
+
+  created() {
+    window.addEventListener('keydown', this.key);
+  },
+  beforeDestroy() {
+    window.removeEventListener('keydown', this.key);
   },
 };
 </script>
